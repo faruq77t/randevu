@@ -1,42 +1,1174 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 * {
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+/* Ana Sayfa */
+.main-container {
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.tab-btn.active {
+  background: #0070f3;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.tab-btn:not(.active) {
+  background: white;
+  color: #333;
+}
+
+.tab-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+}
+
+/* Sorgu Container */
+.query-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.query-container h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.query-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.query-input:focus {
+  outline: none;
+  border-color: #0070f3;
+}
+
+/* Form Container */
+.form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  margin-bottom: 100px;
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333;
+  font-size: 1.8rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+/* Fotoğraf Yükleme Bölümü */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #555;
+}
+
+/* File Input Stili */
+.form-group input[type="file"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px dashed #e1e5e9;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #f8f9fa;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.form-group input[type="file"]:hover {
+  border-color: #0070f3;
+  background-color: #e8f4fd;
+}
+
+.form-group input[type="file"]:focus {
+  outline: none;
+  border-color: #0070f3;
+  box-shadow: 0 0 0 3px rgba(0, 112, 243, 0.1);
+  background-color: #ffffff;
+}
+
+.form-group input[type="file"]::file-selector-button {
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #0070f3, #0051a2);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.form-group input[type="file"]::file-selector-button:hover {
+  background: linear-gradient(135deg, #0051a2, #003d7a);
+  transform: translateY(-1px);
+}
+
+/* Form Help Text */
+.form-help {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* Fotoğraf Önizleme Alanı */
+.photo-preview-container {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.photo-preview {
+  display: inline-block;
+  position: relative;
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 3px solid #0070f3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.photo-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.preview-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 150px;
+  background: #f8f9fa;
+  border: 2px dashed #dee2e6;
+  border-radius: 8px;
+  color: #6c757d;
+}
+
+.preview-placeholder i {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #adb5bd;
+}
+
+/* Yükleme Durumu */
+.upload-status {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.upload-status.success {
+  color: #28a745;
+}
+
+.upload-status.error {
+  color: #dc3545;
+}
+
+.upload-status.loading {
+  color: #0070f3;
+}
+
+/* Dosya Boyutu Uyarısı */
+.file-size-warning {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: #e67e22;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+  .form-group input[type="file"] {
+    padding: 0.5rem;
   }
+  
+  .form-group input[type="file"]::file-selector-button {
+    padding: 0.4rem 0.8rem;
+    margin-right: 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .photo-preview {
+    max-width: 150px;
+    max-height: 150px;
+  }
+  
+  .preview-placeholder {
+    width: 150px;
+    height: 120px;
+  }
+}
+
+/* Özel File Input Container (Opsiyonel) */
+.file-input-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.custom-file-input {
+  position: absolute;
+  left: -9999px;
+}
+
+.custom-file-label {
+  display: block;
+  padding: 0.75rem 1rem;
+  border: 2px dashed #e1e5e9;
+  border-radius: 8px;
+  background: #f8f9fa;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  color: #555;
+}
+
+.custom-file-label:hover {
+  border-color: #0070f3;
+  background: #e8f4fd;
+  color: #0070f3;
+}
+
+.custom-file-label.has-file {
+  border-style: solid;
+  border-color: #28a745;
+  background: #d4edda;
+  color: #155724;
+}
+
+/* Gerekli Alan İşareti */
+.required-field::after {
+  content: " *";
+  color: #dc3545;
+}
+
+/* Hata Durumu */
+.form-group.error input[type="file"] {
+  border-color: #dc3545;
+  background-color: #f8d7da;
+}
+
+.form-group.error .form-help {
+  color: #dc3545;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #0070f3;
+  box-shadow: 0 0 0 3px rgba(0, 112, 243, 0.1);
+}
+
+.form-group textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.readonly-input {
+  background-color: #f8f9fa;
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+.form-help {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+.image-preview {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.image-preview img {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+  border: 2px solid #e1e5e9;
+}
+
+
+.btn{
+   width: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(135deg, #0070f3, #0051a2);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+/* Butonlar */
+.btn-primary {
+  width: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(135deg, #0070f3, #0051a2);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+}
+
+.btn-primary:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Başvuru Takip Sayfası */
+.basvuru-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.basvuru-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e1e5e9;
+}
+
+.basvuru-header h2 {
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.basvuru-id {
+  font-size: 1.1rem;
+  color: #0070f3;
+  font-weight: 600;
+}
+
+.basvuru-info {
+  margin-bottom: 2rem;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid #f1f3f4;
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.label {
+  font-weight: 600;
+  color: #555;
+  min-width: 120px;
+}
+
+.value {
+  color: #333;
+}
+
+.status.pending {
+  color: #e67e22;
+  font-weight: 600;
+}
+
+.status.approved {
+  color: #27ae60;
+  font-weight: 600;
+}
+
+.pdf-section {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.btn-pdf {
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #27ae60, #219a52);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-pdf:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+}
+
+.btn-secondary {
+  width: 100%;
+  padding: 0.75rem;
+  background: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: #545b62;
+}
+
+.pending-notice {
+  text-align: center;
+  padding: 1.5rem;
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.pending-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Loading ve Error */
+.loading-container,
+.error-container {
+  text-align: center;
+  padding: 4rem 2rem;
+  max-width: 500px;
+  margin: 2rem auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #0070f3;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #e74c3c;
+}
+
+/* Admin Panel */
+
+
+.admin-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.admin-table {
+  width: 100%;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.admin-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e1e5e9;
+}
+
+.admin-table th {
+  background: #f8f9fa;
+  font-weight: 600;
+  color: #555;
+}
+
+.admin-table tr:hover {
+  background: #f8f9fa;
+}
+
+.btn-approve {
+  padding: 0.5rem 1rem;
+  background: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-approve:hover {
+  background: #219a52;
+  transform: translateY(-1px);
+}
+
+.btn-download {
+  padding: 0.5rem 1rem;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-download:hover {
+  background: #2980b9;
+  transform: translateY(-1px);
+}
+
+.no-forms {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+  background: white;
+  border-radius: 12px;
+}
+
+/* Sorgulama Sayfası */
+.sorgula-container {
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.sorgula-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.sorgula-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.sorgula-header p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.sorgula-form {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.input-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.sorgula-input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.sorgula-input:focus {
+  outline: none;
+  border-color: #0070f3;
+}
+
+.sorgula-btn {
+  padding: 0.75rem 1.5rem;
+  background: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.sorgula-btn:hover:not(:disabled) {
+  background: #0051a2;
+  transform: translateY(-1px);
+}
+
+.sorgula-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.error-message {
+  padding: 0.75rem;
+  background: #fee;
+  border: 1px solid #fcc;
+  border-radius: 6px;
+  color: #c33;
+}
+
+/* Başvuru Detay */
+.basvuru-detail {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.detail-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e1e5e9;
+}
+
+.detail-header h2 {
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.basvuru-no {
+  font-size: 1.2rem;
+  color: #0070f3;
+  font-weight: 600;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.detail-item.full-width {
+  grid-column: 1 / -1;
+}
+
+.detail-item label {
+  font-weight: 600;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.detail-item span {
+  color: #333;
+  padding: 0.5rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #e1e5e9;
+}
+
+.status-badge {
+  font-weight: 600;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+
+.status-badge.pending {
+  color: #e67e22;
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+}
+
+.status-badge.approved {
+  color: #27ae60;
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+
+.action-buttons {
+  text-align: center;
+}
+
+.download-btn {
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #27ae60, #219a52);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+/* Yardım Bölümü */
+.sorgula-help {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.sorgula-help h3 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.sorgula-help ul {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.sorgula-help li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f1f3f4;
+}
+
+.sorgula-help li:before {
+  content: '•';
+  color: #0070f3;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.home-link {
+  display: block;
+  text-align: center;
+  padding: 0.75rem;
+  background: #6c757d;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.home-link:hover {
+  background: #545b62;
+}
+
+/* Yönlendirme Kartı */
+.sorgula-redirect {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+}
+
+.redirect-card {
+  max-width: 400px;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.redirect-card h3 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.redirect-card p {
+  margin-bottom: 1.5rem;
+  color: #666;
+}
+
+.redirect-btn {
+  padding: 0.75rem 1.5rem;
+  background: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.redirect-btn:hover {
+  background: #0051a2;
+  transform: translateY(-2px);
+}
+
+.admin-btn {
+  background: #e74c3c !important;
+}
+
+.admin-btn:hover {
+  background: #c0392b !important;
+}
+
+/* Admin Panel Geliştirmeleri */
+.refresh-btn {
+  padding: 0.5rem 1rem;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+.refresh-btn:hover {
+  background: #2980b9;
+  transform: translateY(-1px);
+}
+
+.table-info {
+  padding: 1rem;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e1e5e9;
+  font-weight: 600;
+  color: #555;
+}
+
+/* Error Container */
+.error-container h2 {
+  color: #e74c3c;
+  margin-bottom: 1rem;
+}
+
+.error-container p {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+/* PDF İndirme Bilgilendirme */
+.download-info {
+  text-align: center;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #e8f4fd;
+  border-radius: 8px;
+  border: 1px solid #b8daff;
+}
+
+.download-info small {
+  color: #004085;
+  line-height: 1.4;
+}
+
+/* Fotoğraf bölümü stilleri */
+.photo-section {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border: 2px dashed #dee2e6;
+}
+
+.photo-section h3 {
+  margin-bottom: 1rem;
+  color: #495057;
+  font-size: 1.2rem;
+}
+
+.photo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.applicant-photo {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 8px;
+  border: 3px solid #007bff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.no-photo {
+  text-align: center;
+  color: #6c757d;
+  padding: 2rem;
+}
+
+.no-photo span {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.no-photo p {
+  margin: 0;
+  font-style: italic;
+}
+
+/* Login Sayfası Stilleri */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+.login-form {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.login-header h1 {
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.login-header p {
+  color: #666;
+  font-size: 14px;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.login-btn:hover:not(:disabled) {
+  background: #5a6fd8;
+  transform: translateY(-1px);
+}
+
+.login-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.login-info {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 12px;
+  color: #888;
+}
+
+/* Admin Header Butonları */
+.admin-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.logout-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #c82333;
+  transform: translateY(-1px);
+}
+
+/* Responsive tasarım */
+@media (max-width: 768px) {
+  .tab-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .tab-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .input-group {
+    flex-direction: column;
+  }
+  
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .admin-table {
+    overflow-x: auto;
+  }
+  
+  .photo-container {
+    min-height: 150px;
+  }
+  
+  .applicant-photo {
+    max-height: 200px;
+  }
+  
+  .admin-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .logout-btn {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+/* Ek iyileştirmeler */
+.form-group input[type="file"] {
+  padding: 0.5rem;
+}
+
+.required-field::after {
+  content: " *";
+  color: #e74c3c;
+}
+
+.success-message {
+  padding: 1rem;
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: 8px;
+  color: #155724;
+  margin-bottom: 1rem;
+  text-align: center;
 }
